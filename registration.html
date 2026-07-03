@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Safarnama</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h2 class="logo">Safarnama</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="registration.html">Register</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="registration-section">
+    <h1 class="page-title">Tour Registration</h1>
+    <div class="registration-container">
+        <form id="registrationForm">
+            <input type="text" id="name" placeholder="Enter Your Name" required>
+            <input type="email" id="email" placeholder="Enter Your Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <input type="date" id="date" required min="">
+            <select id="package">
+                <option value="">Select Package</option>
+                <option>Goa Special</option>
+                <option>Kerala Tour</option>
+                <option>Kashmir Trip</option>
+                <option>Ladakh Ride</option>
+            </select>
+
+            <label for="file"><b>Upload Aadhaar Card</b></label>
+            <input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png" required>
+            <button type="submit" id="btn">
+                Register
+            </button>
+        </form>
+    </div>
+
+    <div id="card"></div>
+
+</section>
+
+<script src="registration.js"></script>
+
+</body>
+</html>

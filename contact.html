@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h2 class="logo">Safarnama</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="registration.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class="page-title">Contact Us</h1>
+
+    <div class="contact-container">
+        <h2>Safarnama Tourism</h2>
+        <p><strong>Address:</strong> Bangalore, Karnataka, India</p>
+        <p><strong>Phone:</strong> +91 98765432</p>
+        <p><strong>Email:</strong> info@safarnama.com</p>
+        <form class="contact-form">
+            <input type="text" placeholder="Enter Your Name">
+            <input type="email" placeholder="Enter Your Email">
+            <textarea rows="5" placeholder="Enter Your Message"></textarea>
+            <button type="button" onclick="openModal()">Send Message</button>
+        </form>
+    </div>
+    <br><br><br><br><br><br><br><br><br>
+    <button onclick="getLocation()">Get My Location</button>
+    <p id="location"></p>
+
+    <script>
+    function getLocation() {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById("location").innerHTML =
+            "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        });
+    }
+    </script>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <h2>Thank You!</h2>
+            <p>Your message has been sent successfully.</p>
+            <p>We will contact you soon.</p>
+            <button onclick="closeModal()" class="close-btn">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+    function openModal() {
+        document.getElementById("contactModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("contactModal").style.display = "none";
+    }
+    </script>
+
+</body>
+</html>
