@@ -1,5 +1,19 @@
-# Lab-Exercise-2
-A web application that includes Flexbox layout, Grid Layout, HTML5 APIs, Navigation Bar, Heroes, and Modals
+# FSD Labs
 
-A registration page with local storage and validation
+This repository contains my Full Stack Development laboratory exercises completed during my MCA Trimeste.
 
+## Lab Exercises
+
+### Lab 2
+- Tourism website
+- Flexbox Layout
+- CSS Grid
+- HTML5 APIs
+- Navigation Bar
+- Hero Section
+- Modal
+
+### Lab 3
+- Registration Page
+- Form Validation
+- Local Storage
