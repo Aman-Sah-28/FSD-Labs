@@ -1,6 +1,6 @@
 # FSD Labs
 
-This repository contains my Full Stack Development laboratory exercises completed during my MCA Trimeste.
+This repository contains my Full Stack Development laboratory exercises completed during my MCA Trimester 1.
 
 ## Lab Exercises
 
