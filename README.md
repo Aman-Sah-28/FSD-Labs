@@ -1,6 +1,7 @@
 # FSD Labs
 
 This repository contains my Full Stack Development laboratory exercises completed during my MCA Trimester 1.
+Deployment Link: https://aman-sah-28.github.io/FSD-Labs/
 
 ## Lab Exercises
 
