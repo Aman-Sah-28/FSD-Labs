@@ -36,15 +36,10 @@ form.addEventListener("submit", (event) => {
         <h2>Registration Successful</h2>
 
         <p><b>Name :</b> ${name}</p>
-
         <p><b>Email :</b> ${email}</p>
-
         <p><b>Password :</b> ${password}</p>
-
         <p><b>Date :</b> ${date}</p>
-
         <p><b>Package :</b> ${tourPackage}</p>
-
         <p><b>Uploaded File :</b> ${fileName}</p>
     `;
 
