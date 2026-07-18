@@ -12,6 +12,9 @@ form.addEventListener("submit", (event) => {
     const password = document.getElementById("password").value;
     const date = document.getElementById("date").value;
     const tourPackage = document.getElementById("package").value;
+    const phone = document.getElementById("phone").value;
+    const travellers = document.getElementById("travellers").value;
+    const payment = document.querySelector('input[name="payment"]:checked').value;
     const file = document.getElementById("file").files[0];
 
     if (!form.checkValidity()) {
@@ -29,18 +32,24 @@ form.addEventListener("submit", (event) => {
     localStorage.setItem("Email",email);
     localStorage.setItem("Package",tourPackage);
     localStorage.setItem("Travel Date", date);
+    localStorage.setItem("Phone",phone);
+    localStorage.setItem("Travellers",travellers);
+    localStorage.setItem("Payment",payment);
     localStorage.setItem("Uploaded File", fileName);
 
 
-    const tourist = {
+    const tourist={
 
         id: Date.now(),
         name,
         email,
+        phone,
         password,
         date,
         package: tourPackage,
-        file: fileName
+        travellers,
+        payment,
+        file:fileName
     };
 
     if(editId==null){
@@ -71,6 +80,9 @@ function displayTourists(){
             <p><b>Email :</b> ${tourist.email}</p>
             <p><b>Package :</b> ${tourist.package}</p>
             <p><b>Date :</b> ${tourist.date}</p>
+            <p><b>Phone :</b> ${tourist.phone}</p>
+            <p><b>Travellers :</b> ${tourist.travellers}</p>
+            <p><b>Payment :</b> ${tourist.payment}</p>
             <p><b>File :</b> ${tourist.file}</p>
 
             <button onclick="editTourist(${tourist.id})">
@@ -95,6 +107,9 @@ function editTourist(id){
     document.getElementById("package").value=tourist.package;
     editId=id;
     document.getElementById("btn").innerHTML="Update";
+    document.getElementById("phone").value=tourist.phone;
+    document.getElementById("travellers").value=tourist.travellers;
+    document.querySelector(`input[value="${tourist.payment}"]`).checked=true;
 }
 
 function deleteTourist(id){

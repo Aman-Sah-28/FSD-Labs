@@ -438,3 +438,17 @@ footer{
 .tourist-card button:last-of-type{
     background:#dc3545;
 }
+
+.radio-group{
+    display:flex;
+    gap:30px;
+    align-items:center;
+}
+
+.radio-group label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:16px;
+    cursor:pointer;
+}

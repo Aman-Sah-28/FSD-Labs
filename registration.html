@@ -30,6 +30,7 @@
         <form id="registrationForm">
             <input type="text" id="name" placeholder="Enter Your Name" required>
             <input type="email" id="email" placeholder="Enter Your Email" required>
+            <input type="tel" id="phone" placeholder="Enter Phone Number" pattern="[0-9]{10}" required>
             <input type="password" id="password" placeholder="Enter Password" required>
             <input type="date" id="date" required min="">
             <select id="package">
@@ -39,7 +40,22 @@
                 <option>Kashmir Trip</option>
                 <option>Ladakh Ride</option>
             </select>
-
+            <input type="number" id="travellers" placeholder="Number of Travellers" min="1" max="10" required>
+            <label><b>Payment Mode</b></label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="payment" value="UPI" checked>
+                    UPI
+                </label>
+                <label>
+                    <input type="radio" name="payment" value="Card">
+                    Card
+                </label>
+                <label>
+                    <input type="radio" name="payment" value="Cash">
+                    Cash
+                </label>
+            </div>
             <label for="file"><b>Upload Aadhaar Card</b></label>
             <input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png" required>
             <button type="submit" id="btn">Register</button>
