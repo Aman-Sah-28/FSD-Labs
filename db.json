@@ -1,0 +1,29 @@
+{
+  "tourists": [
+    {
+      "id": "ynwc_KB01Vo",
+      "name": "arun",
+      "email": "arun@gmail.com",
+      "phone": "1234567898",
+      "password": "1234567898",
+      "date": "2026-07-30",
+      "package": "Goa Special",
+      "travellers": "10",
+      "payment": "Card",
+      "file": "Python Notes.pdf"
+    },
+    {
+      "id": "nNz6OVZvq-0",
+      "name": "ankit",
+      "email": "ankit@gmail.com",
+      "phone": "6545676545",
+      "password": "7876545676",
+      "date": "2026-07-30",
+      "package": "Kerala Tour",
+      "travellers": "4",
+      "payment": "UPI",
+      "file": "handbook.pdf"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

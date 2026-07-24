@@ -1,9 +1,9 @@
 const form = document.getElementById("registrationForm");
 document.getElementById("date").min = new Date().toISOString().split("T")[0];
-let tourists = [];
+const API_URL = "http://localhost:5000/tourists";
 let editId = null;
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
 
     event.preventDefault();
 
@@ -38,9 +38,7 @@ form.addEventListener("submit", (event) => {
     localStorage.setItem("Uploaded File", fileName);
 
 
-    const tourist={
-
-        id: Date.now(),
+    const tourist = {
         name,
         email,
         phone,
@@ -49,33 +47,60 @@ form.addEventListener("submit", (event) => {
         package: tourPackage,
         travellers,
         payment,
-        file:fileName
+        file: fileName
     };
 
-    if(editId==null){
-        tourists.push(tourist);
-    }
-    else{
-        const index = tourists.findIndex(t=>t.id===editId);
-        tourists[index]=tourist;
-        editId=null;
-        document.getElementById("btn").innerHTML="Register";
-    }
+    if (editId == null) {
 
-    console.log(tourists);
+    await fetch(API_URL, {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(tourist)
+
+    });
+
+    }
+    else {
+        await fetch(`${API_URL}/${editId}`, {
+
+        method: "PUT",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(tourist)
+
+    });
+
+    editId = null;
+    document.getElementById("btn").innerHTML = "Register";
+
+    }
     displayTourists();
-
     form.reset();
 });
 
-function displayTourists(){
-    const touristList=document.getElementById("touristList");
-    touristList.innerHTML="";
-    tourists.forEach((tourist)=>{
+async function displayTourists() {
 
-        touristList.innerHTML+=`
+    const response = await fetch(API_URL);
+    const tourists = await response.json();
+
+    const touristList = document.getElementById("touristList");
+    touristList.innerHTML = "";
+
+    tourists.forEach((tourist) => {
+
+        touristList.innerHTML += `
         <div class="tourist-card">
+
             <h2>Registration Details</h2>
+
             <p><b>Name :</b> ${tourist.name}</p>
             <p><b>Email :</b> ${tourist.email}</p>
             <p><b>Package :</b> ${tourist.package}</p>
@@ -85,34 +110,49 @@ function displayTourists(){
             <p><b>Payment :</b> ${tourist.payment}</p>
             <p><b>File :</b> ${tourist.file}</p>
 
-            <button onclick="editTourist(${tourist.id})">
-            Edit
-            </button>
-
-            <button onclick="deleteTourist(${tourist.id})">
-            Delete
-            </button>
+            <button onclick="editTourist('${tourist._id}')">Edit</button>
+            <button onclick="deleteTourist('${tourist._id}')">Delete</button>
         </div>
         `;
     });
 }
 
 
-function editTourist(id){
-    const tourist= tourists.find(t=>t.id===id);
-    document.getElementById("name").value=tourist.name;
-    document.getElementById("email").value=tourist.email;
-    document.getElementById("password").value=tourist.password;
-    document.getElementById("date").value=tourist.date;
-    document.getElementById("package").value=tourist.package;
-    editId=id;
-    document.getElementById("btn").innerHTML="Update";
-    document.getElementById("phone").value=tourist.phone;
-    document.getElementById("travellers").value=tourist.travellers;
-    document.querySelector(`input[value="${tourist.payment}"]`).checked=true;
+async function editTourist(id) {
+
+    const response = await fetch(`${API_URL}/${id}`);
+    const tourist = await response.json();
+
+    document.getElementById("name").value = tourist.name;
+    document.getElementById("email").value = tourist.email;
+    document.getElementById("phone").value = tourist.phone;
+    document.getElementById("password").value = tourist.password;
+    document.getElementById("date").value = tourist.date;
+    document.getElementById("package").value = tourist.package;
+    document.getElementById("travellers").value = tourist.travellers;
+
+    document.querySelector(
+        `input[name="payment"][value="${tourist.payment}"]`
+    ).checked = true;
+
+    editId = id;
+
+    document.getElementById("btn").innerHTML = "Update";
+
 }
 
-function deleteTourist(id){
-    tourists=tourists.filter(t=>t.id!==id);
+async function deleteTourist(id) {
+
+    await fetch(`${API_URL}/${id}`, {
+
+        method: "DELETE"
+
+    });
+
     displayTourists();
+
 }
+
+displayTourists();
+window.editTourist = editTourist;
+window.deleteTourist = deleteTourist;
